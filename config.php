@@ -2,15 +2,10 @@
 session_start();
 require_once "vendor/autoload.php";
 
-$servername = "110.4.46.121";
-$username = "asmida";
-$password = "abc123";
-$dbname = "imbr";
-
-/*$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "imbr";*/
+$servername = "YourServername";
+$username = "YourUsername";
+$password = "YourPassword";
+$dbname = "YourDatabaseName";
 
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -20,19 +15,19 @@ if ($conn->connect_error) {
 
 // Google Client
 $google_client = new Google_Client();
-$google_client->setClientId('200181232739-bpon661ssifa0f16lgjd2k1u40ps9243.apps.googleusercontent.com');
-$google_client->setClientSecret('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');
-$google_client->setRedirectUri('http://www.imbungaraya.com.my/index.php');
+$google_client->setClientId('YourClientID');
+$google_client->setClientSecret('YourClientSecret');
+$google_client->setRedirectUri('YourLoginUri');
 $google_client->addScope('email');
 
 // Facebook
 $fb = new Facebook\Facebook([
-    'app_id' => '349657884054868',
-    'app_secret' => '75089e698b888a984e9c6d1276858f88',
+    'app_id' => 'YourAppID',
+    'app_secret' => 'YourAppSecret',
     'default_graph_version'=>'v2.10'
 ]);
 $helper = $fb->getRedirectLoginHelper();
-$fb_login_url = $helper->getLoginUrl('http://www.imbungaraya.com.my/');
+$fb_login_url = $helper->getLoginUrl('YourLoginUrl');
 if (isset($_GET['code'])) {
     $goToken=$google_client->fetchAccessTokenWithAuthCode($_GET['code']);
     if (!isset($goToken['error'])) {//access success
@@ -51,7 +46,7 @@ if (isset($_GET['code'])) {
         }
         $_SESSION["loginType"]='google';
         echo '<script language="javascript">
-        document.location="register.php";
+        document.location="dashboard.php";
         </script>';
     }else{
        
@@ -74,7 +69,7 @@ if (isset($_GET['code'])) {
                     // $_SESSION['fb_user_pic'] = $picture['url'];
                     $_SESSION["loginType"]='facebook';
                     echo '<script language="javascript">
-                    document.location="register.php";
+                    document.location="dashboard.php";
                     </script>';
                         
                 }
