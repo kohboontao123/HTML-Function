@@ -10,7 +10,7 @@ In the ever-evolving landscape of web development, integrating social media logi
 
 
 
-##  
+##  Get Your Social Media App ID
 
 To enhance the authentication capabilities of your Go application, you can integrate both Facebook and Google login functionalities. Begin by creating a Facebook App on the [Facebook Developers platform](https://developers.facebook.com/). After creating the app, navigate to the App Dashboard to retrieve your App ID and App Secret—essential credentials for authenticating your application with Facebook. Replace the placeholder values in the example Go code below with the actual App ID and App Secret obtained from the App Dashboard. This ensures secure communication with Facebook's Graph API, allowing your Go application to seamlessly handle user authentication via Facebook credentials.
 
